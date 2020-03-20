@@ -76,9 +76,16 @@
         depositBtn.addEventListener("click",function(){
         const depositNumber = getInputNumber("depositAmount");
 
+         if(depositNumber <0){
+            alert("Deposit number cannot be negetive");
+         } 
+         else{
+            updatespanText("currentDeposit",depositNumber);
+            updatespanText("currentBalance",depositNumber);
+         }  
         
-        updatespanText("currentDeposit",depositNumber);
-        updatespanText("currentBalance",depositNumber);
+        
+        
 
         document.getElementById("depositAmount").value = "";
         
@@ -87,8 +94,16 @@
         const withDrawButton = document.getElementById("addWithdraw");
         withDrawButton.addEventListener("click",function(){
             const withDrawNumber = getInputNumber("withDrawAmount");
-            updatespanText("currentWithdraw",withDrawNumber);
-            updatespanText("currentBalance",-1* withDrawNumber);
+
+            if(withDrawNumber < 0){
+                alert("Withdraw amount cannot be negetive.");
+            }
+            else{
+                updatespanText("currentWithdraw",withDrawNumber);
+                updatespanText("currentBalance",-1* withDrawNumber);
+            }
+
+            
             document.getElementById("withDrawAmount").value = "";
 
         }) 
